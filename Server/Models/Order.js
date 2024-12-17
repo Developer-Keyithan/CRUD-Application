@@ -28,7 +28,7 @@ orderSchema.virtual('userDetails', {
     localField: 'user',
     foreignField: '_id',
     justOne: true,
-    options: { select: 'user_name' }
+    options: { select: 'userName' }
 });
 
 orderSchema.virtual('deviceDetails', {
@@ -36,7 +36,7 @@ orderSchema.virtual('deviceDetails', {
     localField: 'device',
     foreignField: '_id',
     justOne: true,
-    options: { select: 'device_name' }
+    options: { select: 'deviceName' }
 });
 
 const Order = mongoose.model('Order', orderSchema);
