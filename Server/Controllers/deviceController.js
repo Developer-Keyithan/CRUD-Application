@@ -2,7 +2,17 @@ const express = require('express');
 const router = express.Router();
 const Device = require('../Models/Device');
 
-exports.addDevice =  async (req, res) => {
+
+
+exports.getDeviceInfo = (req, res) => {
+    res.json({ message: 'Device Info' });
+};
+
+exports.adminOnly = (req, res) => {
+    res.json({ message: 'Admin-only information' });
+};
+
+exports.addDevice = async (req, res) => {
     try {
         const device = new Device(req.body);
         const savedDevice = await device.save();
@@ -21,7 +31,7 @@ exports.getDevices = async (req, res) => {
     }
 };
 
-exports.getDevice =  async (req, res) => {
+exports.getDevice = async (req, res) => {
     try {
         const device = await Device.findById(req.params.id);
         if (!device) return res.status(404).json({ error: 'Device not found' });
